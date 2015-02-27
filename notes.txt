@@ -1,0 +1,62 @@
+Notes on Anna's solution:
+
+div for users: users
+div for form: new-user-form
+
+submit click hander is inside document.ready
+  UserApp.submit_user
+
+UserApp.add_one_user
+
+submit user function:
+UserApp.submit-user = function(event)
+event.preventDefault();
+$.ajax({
+    url: ...
+    type: 'POST' ...
+    dataType: 'JSON'
+    data: {
+      user: {
+        name: $(name).val(),
+        about: $(about).val(),
+        email: $(email).val()
+      }
+    },
+})
+.done
+
+  UserApp.add_one_user(new_user);
+
+
+init: function
+
+------
+Javascript & jQuery research: wdi_7_demo_ajax_post_hacker_news assignment
+return the last element in an array:
+ var a = [1,2,3,4];
+ var lastEl = a[a.length-1]; // 4
+
+When dealing with a jQuery object, .last() will do just that, filter the matched elements to only the last one in the set.
+Of course, you can wrap a native array with jQuery leading to this:
+var a = [1,2,3,4];
+var lastEl = $(a).last()[0];
+
+Use the get method:
+var a = [1,2,3,4];
+var last = $(a).get(-1);
+
+Sorting arrays, descending
+http://www.javascriptkit.com/javatutors/arraysort.shtml
+//Sort numerically and descending:
+var myarray=[25, 8, 7, 41]
+myarray.sort(function(a,b){return b - a}) //Array now becomes [41, 25, 8, 71]
+
+// a and b are object elements of your array
+function mycomparator(a,b) {
+  return parseInt(a.price) - parseInt(b.price);
+}
+If you want to sort ascending change parseInt(a.price) - parseInt(b.price) to parseInt(b.price) - parseInt(a.price). Note the change from a to b.
+
+To execute the sort:
+homes.sort(mycomparator);
+
